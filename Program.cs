@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.AddAzureWebAppDiagnostics();
 
-builder.Services.AddDbContext<MyDatabaseContext>(options => options.UseNpgsql("AZURE_MYSQL_CONNECTIONSTRING"));
+builder.Services.AddDbContext<MyDatabaseContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("AZURE_MYSQL_CONNECTIONSTRING")));
 builder.Services.AddStackExchangeRedisCache(options =>
 {
 	options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
