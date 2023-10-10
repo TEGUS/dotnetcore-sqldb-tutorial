@@ -8,8 +8,12 @@ builder.Logging.AddAzureWebAppDiagnostics();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseSqlite("Data Source=localdatabase.db"));
+builder.Services.AddDbContext<MyDatabaseContext>(options => options.UseMySql("AZURE_MYSQL_CONNECTIONSTRING"));
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+	options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+	options.InstanceName = "SampleInstance";
+});
 
 var app = builder.Build();
 
