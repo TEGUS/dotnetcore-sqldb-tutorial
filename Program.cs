@@ -8,7 +8,7 @@ builder.Logging.AddAzureWebAppDiagnostics();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<MyDatabaseContext>(options => options.UseMySql("AZURE_MYSQL_CONNECTIONSTRING"));
+builder.Services.AddDbContext<MyDatabaseContext>(options => options.UseNpgsql("AZURE_MYSQL_CONNECTIONSTRING"));
 builder.Services.AddStackExchangeRedisCache(options =>
 {
 	options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];

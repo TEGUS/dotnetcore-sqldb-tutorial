@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
         
       - name: dotnet add Pomelo.EntityFrameworkCore.MySql.Design
-        run: dotnet add package Pomelo.EntityFrameworkCore.MySql.Design --version 1.1.2
+        run: dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 6.0.1
         
       - name: dotnet add Microsoft.Extensions.Caching.StackExchangeRedis
         run: dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis --version 6.0.22
