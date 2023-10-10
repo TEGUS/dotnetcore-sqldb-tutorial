@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
-      - name: dotnet add Pomelo.EntityFrameworkCore.MySql.Design
+      - name: dotnet add Npgsql.EntityFrameworkCore.PostgreSQL
         run: dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 6.0.1
         
       - name: dotnet add Microsoft.Extensions.Caching.StackExchangeRedis
@@ -38,7 +38,7 @@ jobs:
         run: dotnet tool install -g dotnet-ef
         
       - name: dotnet bundle migration
-        run: dotnet ef migrations bundle --runtime linux-x64 -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate 
+        run: dotnet ef migrations bundle --runtime linux-x64 -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o \${{env.DOTNET_ROOT}}/myapp/migrate 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
